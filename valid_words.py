@@ -1,7 +1,14 @@
 '''
-to return a list of valid dictionary words given an input_string, run `valid_words(input_string, dictionary)`
-valid_words() will find all subsets of the given input string and then find all permutations of the subsets
-finally, it will check all permutations against the dictionary and return a list of string that matches.
+Find valid words from a given string
+objective: to return a list of valid dictionary words given an input_string
+
+How to: 
+run `valid_words(input_string, dictionary)`
+First, valid_words() will find all subsets of the given input string (find_subsets(input)). 
+Next, loop through the subsets to find all permutations of the subsets (permute(subset)).
+Finally, it will loop through all permutations and check against the dictionary and return a list of strings that matches.
+
+oncall: Kent Ou
 '''
 
 from collections import Counter
