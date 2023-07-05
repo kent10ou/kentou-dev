@@ -1,8 +1,14 @@
+'''
+to return a list of valid dictionary words given an input_string, run `valid_words(input_string, dictionary)`
+valid_words() will find all subsets of the given input string and then find all permutations of the subsets
+finally, it will check all permutations against the dictionary and return a list of string that matches.
+'''
+
 from collections import Counter
 
 # returns a list of valid English word from a given input string
-def valid_words(input_string, wordDict):
-    wordSet = set(wordDict)
+def valid_words(input_string, word_dict):
+    word_set = set(word_dict)
     subsets = []
     permutations = []
     res = []
@@ -22,6 +28,7 @@ def valid_words(input_string, wordDict):
     return res
 
 # returns the subsets for a given input string and exclude duplicates -> List[List[string]]
+# ex. subsets of 'abc': [['a', 'b', 'c'], ['a', 'b'], ['a', 'c'], ['a'], ['b', 'c'], ['b'], ['c'], []]
 def find_subsets(s, subset, i, subsets):
     if i >= len(s):            
         subsets.append(subset[::])
@@ -38,6 +45,7 @@ def find_subsets(s, subset, i, subsets):
     find_subsets(s, subset, i + 1, subsets)
 
 # returns the permutations of word and join the string -> List[string]
+# ex. permutation of ['a', 'b', 'c']: ['abc', 'acb', 'bac', 'bca', 'cab', 'cba']
 def permute(word, res):
     perm = []
     count = Counter(word)
@@ -61,10 +69,10 @@ def permute(word, res):
 
 
 # Test the function
-input_string = "oogd"
-dictionary = ["go", "good", "god", "dog", "do", "log", "loop"]
-words = valid_words(input_string, dictionary)
-print(words)
+# input_string = "oogd"
+# dictionary = ["go", "good", "god", "dog", "do", "log", "loop"]
+# words = valid_words(input_string, dictionary)
+# print(words)
 
 '''
 subsets: [['o', 'o', 'g', 'd'], ['o', 'o', 'g'], ['o', 'o', 'd'], ['o', 'o'], ['o', 'g', 'd'], ['o', 'g'], ['o', 'd'], ['o'], ['g', 'd'], ['g'], ['d'], []]
